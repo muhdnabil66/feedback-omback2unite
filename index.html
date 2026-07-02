@@ -287,18 +287,19 @@
             text-align: center;
         }
 
-        .ty-crest {
-            width: 64px;
-            height: 64px;
-            border-radius: 50%;
-            background: radial-gradient(circle at 35% 30%, #ffe27a, #d99a1a 60%, #a86e0c 100%);
-            border: 3px solid #fff;
-            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.35);
+        /* Enlarged two logos side by side – clean, no circle */
+        .ty-logos {
             display: flex;
             align-items: center;
             justify-content: center;
-            font-size: 26px;
+            gap: 14px;
             margin-bottom: 10px;
+        }
+
+        .ty-logos img {
+            width: 80px;
+            height: 80px;
+            object-fit: contain;
         }
 
         .ty-title {
@@ -335,7 +336,6 @@
             margin-bottom: 16px;
         }
 
-        /* NEW: reminder box replacing the badges */
         .feedback-reminder {
             background: #e6f0ff;
             border: 1px solid #a3c8f0;
@@ -356,7 +356,7 @@
         }
 
         /* =========================================
-           WINDOW 2: GALLERY
+           WINDOW 2: GALLERY (original image1.jpg, image2.jpg)
            ========================================= */
         #win-gallery {
             width: 420px;
@@ -584,7 +584,11 @@
                 </div>
                 <div class="xp-body">
                     <div class="ty-brand">
-                        <div class="ty-crest">🏆</div>
+                        <!-- Only event1 and event2, enlarged, no circle, no UITM -->
+                        <div class="ty-logos">
+                            <img src="event1.png" alt="Event 1" />
+                            <img src="event2.png" alt="Event 2" />
+                        </div>
                         <div class="ty-title">THANK YOU</div>
                         <div class="ty-sub">OM Back2Unite</div>
                         <div class="ty-quote">"Past brought us together, the future keeps us connected."</div>
@@ -593,7 +597,6 @@
                             Your presence made this event truly special and meaningful.
                         </p>
 
-                        <!-- REPLACED BADGES WITH REMINDER TEXT -->
                         <div class="feedback-reminder">
                             📢 Kindly share your thoughts via the <strong>Feedback</strong> form, and feel free to browse the <strong>Photo Album</strong> to relive the best moments!
                         </div>
@@ -607,7 +610,7 @@
                 <div class="xp-statusbar">Event status: Concluded &nbsp;|&nbsp; OM Back2Unite 2004–2026</div>
             </div>
 
-            <!-- WINDOW 2: GOOGLE DRIVE ALBUM -->
+            <!-- WINDOW 2: GOOGLE DRIVE ALBUM (image1.jpg, image2.jpg intact) -->
             <div class="xp-window" id="win-gallery">
                 <div class="xp-titlebar">
                     <div class="xp-titlebar-text">
@@ -622,12 +625,10 @@
                 <div class="xp-body">
                     <p class="gallery-note">A few highlights from the day. Open the full album on Google Drive for everything.</p>
                     <div class="gallery-grid">
-                        <!-- Placeholder image 1 -->
                         <div class="photo-card">
                             <img src="image1.jpg" alt="Event photo 1" onerror="this.style.display='none';this.nextElementSibling?.nextElementSibling?.style?.display='block';">
                             <p>📸 Moment 1</p>
                         </div>
-                        <!-- Placeholder image 2 -->
                         <div class="photo-card">
                             <img src="image2.jpg" alt="Event photo 2" onerror="this.style.display='none';this.nextElementSibling?.nextElementSibling?.style?.display='block';">
                             <p>📸 Moment 2</p>
