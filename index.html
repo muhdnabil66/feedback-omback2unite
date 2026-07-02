@@ -1,0 +1,706 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>OM Back2Unite - Thank You</title>
+    <style>
+        /* =========================================
+           WINDOWS XP SP2 "LUNA" THEME TOKENS
+           ========================================= */
+        :root {
+            --xp-face: #ece9d8;
+            --xp-face-edge: #d9d3bd;
+            --xp-titlebar-1: #2a8bee;
+            --xp-titlebar-2: #0a58e6;
+            --xp-titlebar-3: #003fcb;
+            --xp-titlebar-glow: #7fb8ff;
+            --xp-border: #0831d9;
+            --xp-border-dark: #06216e;
+            --xp-btn-face: #ece9d8;
+            --xp-btn-shadow: #716f64;
+            --xp-blue-link: #0a58e6;
+            --xp-green-1: #8de35c;
+            --xp-green-2: #2b8a1e;
+            --xp-red-1: #f6a19c;
+            --xp-red-2: #d43f34;
+            --xp-red-3: #a3160c;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: Tahoma, "Segoe UI", Verdana, sans-serif;
+        }
+
+        html,
+        body {
+            width: 100%;
+            height: 100%;
+            overflow: hidden;
+            color: #000;
+            -webkit-font-smoothing: antialiased;
+        }
+
+        /* =========================================
+           XP "BLISS" DESKTOP BACKGROUND
+           ========================================= */
+        .desktop {
+            position: relative;
+            width: 100%;
+            height: 100%;
+            background:
+                radial-gradient(circle at 82% 12%, #fff7c7 0%, #ffe98a 5%, rgba(255, 233, 138, 0) 12%),
+                linear-gradient(180deg, #2f7fe0 0%, #6fb3ef 32%, #bfe0f7 52%, #eaf6e0 58%, #7fbf5a 63%, #4f9e3e 78%, #327a2b 100%);
+            overflow: hidden;
+        }
+
+        .hill-back {
+            position: absolute;
+            left: -10%;
+            bottom: 14%;
+            width: 130%;
+            height: 34%;
+            background: radial-gradient(ellipse at 50% 100%, #7fc260 0%, #58a53f 60%, transparent 75%);
+            border-radius: 50%;
+            opacity: 0.85;
+        }
+
+        .hill-front {
+            position: absolute;
+            left: -15%;
+            bottom: 0;
+            width: 140%;
+            height: 26%;
+            background: radial-gradient(ellipse at 40% 100%, #6ec24a 0%, #3f8b2c 55%, transparent 75%);
+            border-radius: 50%;
+        }
+
+        .cloud {
+            position: absolute;
+            background: rgba(255, 255, 255, 0.85);
+            border-radius: 50px;
+            filter: blur(1px);
+        }
+
+        /* =========================================
+           MODAL OVERLAY
+           ========================================= */
+        .modal-overlay {
+            position: absolute;
+            inset: 0;
+            background: rgba(0, 0, 0, 0.35);
+            display: none;
+            align-items: center;
+            justify-content: center;
+            z-index: 500;
+            animation: overlayFade .25s ease;
+        }
+
+        .modal-overlay.show {
+            display: flex;
+        }
+
+        @keyframes overlayFade {
+            from {
+                opacity: 0;
+            }
+            to {
+                opacity: 1;
+            }
+        }
+
+        /* =========================================
+           XP WINDOW CHROME
+           ========================================= */
+        .xp-window {
+            display: none;
+            flex-direction: column;
+            background: var(--xp-face);
+            border: 1px solid var(--xp-border-dark);
+            border-radius: 8px;
+            box-shadow: 3px 4px 18px rgba(0, 0, 0, 0.55), 0 0 0 1px var(--xp-border) inset;
+            overflow: hidden;
+            animation: winPop .22s cubic-bezier(.2, 1.4, .4, 1);
+        }
+
+        .xp-window.active {
+            display: flex;
+        }
+
+        @keyframes winPop {
+            from {
+                transform: scale(0.85);
+                opacity: 0;
+            }
+            to {
+                transform: scale(1);
+                opacity: 1;
+            }
+        }
+
+        .xp-titlebar {
+            position: relative;
+            height: 30px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 0 3px 0 6px;
+            background: linear-gradient(180deg,
+                    var(--xp-titlebar-1) 0%,
+                    var(--xp-titlebar-glow) 10%,
+                    var(--xp-titlebar-2) 22%,
+                    var(--xp-titlebar-2) 60%,
+                    var(--xp-titlebar-3) 100%);
+            border-bottom: 1px solid var(--xp-border-dark);
+            border-radius: 7px 7px 0 0;
+        }
+
+        .xp-titlebar-text {
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            color: #fff;
+            font-size: 12px;
+            font-weight: 700;
+            text-shadow: 1px 1px 1px rgba(0, 0, 0, 0.55);
+            letter-spacing: .2px;
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+        }
+
+        .xp-titlebar-icon {
+            width: 16px;
+            height: 16px;
+            flex: none;
+            background: #fff;
+            border-radius: 3px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 10px;
+        }
+
+        .xp-controls {
+            display: flex;
+            gap: 2px;
+        }
+
+        .xp-controls button {
+            width: 21px;
+            height: 20px;
+            border-radius: 3px;
+            border: 1px solid rgba(0, 0, 0, 0.35);
+            cursor: pointer;
+            font-size: 11px;
+            font-weight: 700;
+            color: #3a3a3a;
+            background: linear-gradient(180deg, #fdfdfd 0%, var(--xp-btn-face) 45%, #cfc9b6 100%);
+            box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.8);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .xp-controls button:hover {
+            filter: brightness(1.08);
+        }
+
+        .xp-controls .btn-close {
+            color: #fff;
+            background: linear-gradient(180deg, var(--xp-red-1) 0%, var(--xp-red-2) 45%, var(--xp-red-3) 100%);
+            border-color: #7a0e07;
+        }
+
+        .xp-controls .btn-close:hover {
+            background: linear-gradient(180deg, #ffb7b1 0%, #e8493d 45%, #b81c11 100%);
+        }
+
+        .xp-body {
+            flex: 1;
+            background: var(--xp-face);
+            padding: 22px 24px;
+            overflow-y: auto;
+        }
+
+        .xp-statusbar {
+            height: 20px;
+            background: linear-gradient(180deg, #fdfdfd, var(--xp-face-edge));
+            border-top: 1px solid #fff;
+            box-shadow: 0 -1px 0 #b8b3a0 inset;
+            font-size: 10px;
+            color: #555;
+            display: flex;
+            align-items: center;
+            padding: 0 8px;
+        }
+
+        /* XP classic button */
+        .xp-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            padding: 6px 18px;
+            font-size: 11px;
+            font-weight: 600;
+            color: #000;
+            background: linear-gradient(180deg, #fefefe 0%, #ece9d8 48%, #d7d1bd 52%, #cfc9b3 100%);
+            border: 1px solid var(--xp-btn-shadow);
+            border-radius: 3px;
+            box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.9);
+            cursor: pointer;
+            text-decoration: none;
+            transition: all .12s ease;
+        }
+
+        .xp-btn:hover {
+            background: linear-gradient(180deg, #fff6d9 0%, #ffe8a0 48%, #ffd97a 52%, #f6c862 100%);
+            border-color: #c99a1f;
+        }
+
+        .xp-btn:active {
+            background: linear-gradient(180deg, #ffd97a, #f6c862);
+        }
+
+        .xp-btn-primary {
+            background: linear-gradient(180deg, #eef6ff 0%, #cfe6ff 48%, #a9d0ff 52%, #8fc0fb 100%);
+            border-color: #3a6fbd;
+        }
+
+        .xp-btn-primary:hover {
+            background: linear-gradient(180deg, #f5faff 0%, #dcefff 48%, #b9dcff 52%, #a0cdfa 100%);
+        }
+
+        /* =========================================
+           WINDOW 1: THANK YOU
+           ========================================= */
+        #win-thankyou {
+            width: 460px;
+        }
+
+        .ty-brand {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+        }
+
+        .ty-crest {
+            width: 64px;
+            height: 64px;
+            border-radius: 50%;
+            background: radial-gradient(circle at 35% 30%, #ffe27a, #d99a1a 60%, #a86e0c 100%);
+            border: 3px solid #fff;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.35);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 26px;
+            margin-bottom: 10px;
+        }
+
+        .ty-title {
+            font-size: 26px;
+            font-weight: 800;
+            color: var(--xp-titlebar-3);
+            letter-spacing: .5px;
+            text-shadow: 1px 1px 0 #fff;
+        }
+
+        .ty-sub {
+            font-size: 13px;
+            color: #444;
+            margin: 4px 0 14px;
+            font-weight: 600;
+        }
+
+        .ty-quote {
+            font-size: 12px;
+            font-style: italic;
+            color: #555;
+            border-left: 3px solid var(--xp-titlebar-2);
+            padding: 6px 10px;
+            margin-bottom: 12px;
+            text-align: left;
+            background: #fff;
+            border-radius: 0 4px 4px 0;
+        }
+
+        .ty-body-text {
+            font-size: 12px;
+            color: #333;
+            line-height: 1.6;
+            margin-bottom: 16px;
+        }
+
+        .badges {
+            display: flex;
+            gap: 8px;
+            flex-wrap: wrap;
+            justify-content: center;
+            margin-bottom: 18px;
+        }
+
+        .badge {
+            padding: 4px 12px;
+            font-size: 11px;
+            font-weight: 700;
+            color: #fff;
+            background: linear-gradient(180deg, var(--xp-titlebar-1), var(--xp-titlebar-3));
+            border-radius: 10px;
+            border: 1px solid var(--xp-border-dark);
+        }
+
+        .ty-actions {
+            display: flex;
+            gap: 10px;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        /* =========================================
+           WINDOW 2: GALLERY
+           ========================================= */
+        #win-gallery {
+            width: 420px;
+        }
+
+        .gallery-note {
+            font-size: 11px;
+            color: #555;
+            margin-bottom: 12px;
+        }
+
+        .gallery-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 12px;
+            margin-bottom: 14px;
+        }
+
+        .photo-card {
+            background: #fff;
+            border: 1px solid #b7b199;
+            padding: 6px;
+            box-shadow: 1px 2px 4px rgba(0, 0, 0, 0.25);
+        }
+
+        .photo-card img {
+            width: 100%;
+            height: 100px;
+            object-fit: cover;
+            display: block;
+            background: #dcd7c4;
+            border: 1px solid #ddd;
+        }
+
+        .photo-card p {
+            font-size: 10.5px;
+            text-align: center;
+            margin-top: 5px;
+            font-weight: 700;
+            color: #333;
+        }
+
+        .gallery-cta {
+            text-align: center;
+        }
+
+        /* =========================================
+           WINDOW 3: FEEDBACK
+           ========================================= */
+        #win-feedback {
+            width: 360px;
+        }
+
+        .fb-icon {
+            font-size: 34px;
+            text-align: center;
+            margin-bottom: 6px;
+        }
+
+        #win-feedback h3 {
+            text-align: center;
+            color: var(--xp-titlebar-3);
+            font-size: 16px;
+            margin-bottom: 8px;
+        }
+
+        #win-feedback p {
+            font-size: 12px;
+            color: #444;
+            text-align: center;
+            line-height: 1.55;
+            margin-bottom: 16px;
+        }
+
+        .fb-cta {
+            text-align: center;
+        }
+
+        /* =========================================
+           XP TASKBAR
+           ========================================= */
+        .taskbar {
+            position: absolute;
+            left: 0;
+            bottom: 0;
+            width: 100%;
+            height: 34px;
+            background: linear-gradient(180deg, #2c8ae8 0%, #1f6fd8 12%, #1257c9 45%, #0d47ad 100%);
+            border-top: 1px solid #6fb3ef;
+            display: flex;
+            align-items: stretch;
+            z-index: 50;
+            box-shadow: 0 -2px 6px rgba(0, 0, 0, 0.4);
+        }
+
+        .start-btn {
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            padding: 0 16px 0 10px;
+            background: linear-gradient(180deg, #8de35c 0%, #4fae2c 45%, #2b8a1e 100%);
+            border-right: 2px solid #0d3d0a;
+            color: #fff;
+            font-weight: 800;
+            font-style: italic;
+            font-size: 14px;
+            text-shadow: 1px 1px 1px rgba(0, 0, 0, 0.4);
+            cursor: pointer;
+            clip-path: polygon(0 0, 100% 0, 92% 100%, 0% 100%);
+        }
+
+        .win-flag {
+            width: 14px;
+            height: 14px;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            grid-template-rows: 1fr 1fr;
+            gap: 1px;
+        }
+
+        .win-flag span:nth-child(1) {
+            background: #ff4b3e;
+        }
+        .win-flag span:nth-child(2) {
+            background: #7dcb3a;
+        }
+        .win-flag span:nth-child(3) {
+            background: #3e9bff;
+        }
+        .win-flag span:nth-child(4) {
+            background: #ffd23e;
+        }
+
+        .taskbar-sep {
+            width: 1px;
+            background: rgba(255, 255, 255, 0.25);
+            margin: 5px 4px;
+        }
+
+        .taskbar-items {
+            display: flex;
+            align-items: center;
+            gap: 5px;
+            padding: 0 6px;
+            flex: 1;
+        }
+
+        .task-item {
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            height: 24px;
+            padding: 0 10px;
+            background: linear-gradient(180deg, #3a86e0, #1c5cc4);
+            border: 1px solid #0d3f9e;
+            border-radius: 3px;
+            color: #fff;
+            font-size: 11px;
+            font-weight: 600;
+            cursor: pointer;
+            opacity: 0.75;
+            white-space: nowrap;
+        }
+
+        .task-item.active {
+            opacity: 1;
+            background: linear-gradient(180deg, #dfeeff, #a9d0ff);
+            color: #043a86;
+            box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.35);
+        }
+
+        .taskbar-tray {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            padding: 0 12px;
+            color: #fff;
+            font-size: 11px;
+            border-left: 1px solid rgba(255, 255, 255, 0.25);
+            background: linear-gradient(180deg, #1a5fce, #0d47ad);
+        }
+
+        /* =========================================
+           RESPONSIVE
+           ========================================= */
+        @media (max-width: 600px) {
+            .xp-window {
+                width: 92vw !important;
+                max-height: 82vh;
+            }
+            .xp-body {
+                padding: 16px;
+            }
+            .gallery-grid {
+                grid-template-columns: 1fr 1fr;
+            }
+            .task-item span.task-label {
+                display: none;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="desktop">
+        <div class="cloud" style="width:140px;height:36px;top:8%;left:6%;"></div>
+        <div class="cloud" style="width:90px;height:24px;top:16%;left:60%;"></div>
+        <div class="hill-back"></div>
+        <div class="hill-front"></div>
+
+        <!-- MODAL OVERLAY -->
+        <div class="modal-overlay show" id="overlay">
+
+            <!-- WINDOW 1: THANK YOU -->
+            <div class="xp-window active" id="win-thankyou">
+                <div class="xp-titlebar">
+                    <div class="xp-titlebar-text">
+                        <span class="xp-titlebar-icon">★</span> OM Back2Unite — Thank You
+                    </div>
+                    <div class="xp-controls">
+                        <button onclick="openWindow('win-thankyou')" title="Minimize">_</button>
+                        <button onclick="openWindow('win-thankyou')" title="Maximize">❐</button>
+                        <button class="btn-close" onclick="openWindow('win-thankyou')" title="Close">✕</button>
+                    </div>
+                </div>
+                <div class="xp-body">
+                    <div class="ty-brand">
+                        <div class="ty-crest">🏆</div>
+                        <div class="ty-title">THANK YOU</div>
+                        <div class="ty-sub">OM Back2Unite</div>
+                        <div class="ty-quote">"Past brought us together, the future keeps us connected."</div>
+                        <p class="ty-body-text">
+                            Thank you for joining and making OM Back2Unite lively!<br />
+                            Your presence made this event truly special and meaningful.
+                        </p>
+                        <div class="badges">
+                            <span class="badge">OM114</span>
+                            <span class="badge">BM118</span>
+                            <span class="badge">BA118</span>
+                            <span class="badge">BA132</span>
+                        </div>
+                        <div class="ty-actions">
+                            <button class="xp-btn xp-btn-primary" onclick="openWindow('win-gallery')">📁 View Photo Album</button>
+                            <button class="xp-btn" onclick="openWindow('win-feedback')">✉️ Give Feedback</button>
+                        </div>
+                    </div>
+                </div>
+                <div class="xp-statusbar">Event status: Concluded &nbsp;|&nbsp; OM Back2Unite 2004–2026</div>
+            </div>
+
+            <!-- WINDOW 2: GOOGLE DRIVE ALBUM -->
+            <div class="xp-window" id="win-gallery">
+                <div class="xp-titlebar">
+                    <div class="xp-titlebar-text">
+                        <span class="xp-titlebar-icon">📁</span> Event Album — Google Drive
+                    </div>
+                    <div class="xp-controls">
+                        <button onclick="openWindow('win-thankyou')" title="Minimize">_</button>
+                        <button onclick="openWindow('win-thankyou')" title="Maximize">❐</button>
+                        <button class="btn-close" onclick="openWindow('win-thankyou')" title="Close">✕</button>
+                    </div>
+                </div>
+                <div class="xp-body">
+                    <p class="gallery-note">A few highlights from the day. Open the full album on Google Drive for everything.</p>
+                    <div class="gallery-grid">
+                        <!-- Placeholder image 1 -->
+                        <div class="photo-card">
+                            <img src="image1.jpg" alt="Event photo 1" onerror="this.style.display='none';this.nextElementSibling?.nextElementSibling?.style?.display='block';">
+                            <p>📸 Moment 1</p>
+                        </div>
+                        <!-- Placeholder image 2 -->
+                        <div class="photo-card">
+                            <img src="image2.jpg" alt="Event photo 2" onerror="this.style.display='none';this.nextElementSibling?.nextElementSibling?.style?.display='block';">
+                            <p>📸 Moment 2</p>
+                        </div>
+                    </div>
+                    <div class="gallery-cta">
+                        <a href="https://drive.google.com/drive/folders/1dv1ScK9RzW4njKh4niR-bc5OW3XhF9ps?usp=sharing" target="_blank" class="xp-btn xp-btn-primary">Open Full Album ➔</a>
+                    </div>
+                </div>
+                <div class="xp-statusbar">2 items shown &nbsp;|&nbsp; Google Drive</div>
+            </div>
+
+            <!-- WINDOW 3: FEEDBACK FORM -->
+            <div class="xp-window" id="win-feedback">
+                <div class="xp-titlebar">
+                    <div class="xp-titlebar-text">
+                        <span class="xp-titlebar-icon">✉</span> Feedback — Google Form
+                    </div>
+                    <div class="xp-controls">
+                        <button onclick="openWindow('win-thankyou')" title="Minimize">_</button>
+                        <button onclick="openWindow('win-thankyou')" title="Maximize">❐</button>
+                        <button class="btn-close" onclick="openWindow('win-thankyou')" title="Close">✕</button>
+                    </div>
+                </div>
+                <div class="xp-body">
+                    <div class="fb-icon">📝</div>
+                    <h3>Share Your Thoughts</h3>
+                    <p>Help us remember! Share your favourite moments, feedback, and memories from OM Back2Unite.</p>
+                    <div class="fb-cta">
+                        <a href="https://forms.gle/Z3eAMTaDAyiWwQAb8" target="_blank" class="xp-btn xp-btn-primary">Open Feedback Form ➔</a>
+                    </div>
+                </div>
+                <div class="xp-statusbar">Response takes ~2 minutes &nbsp;|&nbsp; Google Forms</div>
+            </div>
+
+        </div>
+
+        <!-- XP TASKBAR -->
+        <div class="taskbar">
+            <div class="start-btn" onclick="openWindow('win-thankyou')">
+                <span class="win-flag"><span></span><span></span><span></span><span></span></span>
+                start
+            </div>
+            <div class="taskbar-sep"></div>
+            <div class="taskbar-items">
+                <div class="task-item active" id="tab-win-thankyou" onclick="openWindow('win-thankyou')">★ <span class="task-label">Thank You</span></div>
+                <div class="task-item" id="tab-win-gallery" onclick="openWindow('win-gallery')">📁 <span class="task-label">Album</span></div>
+                <div class="task-item" id="tab-win-feedback" onclick="openWindow('win-feedback')">✉ <span class="task-label">Feedback</span></div>
+            </div>
+            <div class="taskbar-tray">🔊 EN 11:59 PM</div>
+        </div>
+    </div>
+
+    <script>
+        const windows = ['win-thankyou', 'win-gallery', 'win-feedback'];
+        const overlay = document.getElementById('overlay');
+
+        function openWindow(id) {
+            windows.forEach(w => {
+                document.getElementById(w).classList.toggle('active', w === id);
+                document.getElementById('tab-' + w).classList.toggle('active', w === id);
+            });
+            overlay.classList.add('show');
+        }
+
+        // Ensure Thank You is shown on load
+        openWindow('win-thankyou');
+    </script>
+
+</body>
+</html>
